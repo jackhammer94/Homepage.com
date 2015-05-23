@@ -32,9 +32,9 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validation=Validator::make(Input::all(),['email'=>'required|exists:users','password'=>'required']);
-	    if($validation->fails())
-			return  Redirect::back()->withInput()->withErrors($validation->messages());
+		// $validation=Validator::make(Input::all(),['email'=>'required|exists:users','password'=>'required']);
+	 //    if($validation->fails())
+		// 	return  Redirect::back()->withInput()->withErrors($validation->messages());
 	
 		$credentials = [
             'email' => Input::get('email'),
@@ -44,11 +44,11 @@ class SessionsController extends \BaseController {
 		if(Auth::attempt($credentials,Input::get('remember_me')=='true'?true:false))
 		{   //echo Input::get('remember_me');
 			//return 'Welome, your email is '.Auth::user()->email;
-			Flash::message('Welcome, good to see you again!');
+			Flash::message('Hi '.Auth::user()->username.', good to see you again!');
 			return Redirect::home();
 		}
 		Flash::error('Invalid email or password!');
-		return Redirect::back();
+		return Redirect::back()->withInput();
 	
 	}
 

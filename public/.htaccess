@@ -13,3 +13,14 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# BEGIN Expire headers
+ExpiresActive On
+ExpiresDefault "access plus 604800 seconds"
+ExpiresByType image/jpeg "access plus 2592000 seconds"
+ExpiresByType image/jpg "access plus 2592000 seconds"
+ExpiresByType image/png "access plus 2592000 seconds"
+ExpiresByType image/gif "access plus 2592000 seconds"
+ExpiresByType text/css "access plus 604800 seconds"
+
+# END Expire headers

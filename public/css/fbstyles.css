@@ -1,0 +1,106 @@
+/*fb styles*/
+#facebook{
+ font-size:14px;
+ }
+
+ #facebook p{
+  line-height: 20px;
+ }
+ .fa-pencil-square{
+ color:#5B7CC0;
+ }
+ #status_box{
+ margin-top:5px;
+ border:1px solid #BEBEBE;  
+ padding-top:10px;
+ 
+ }
+ #status_box_top{ 
+ padding-left:10px;
+ padding-right:10px;
+
+ }
+ #status_box_header{
+ border-bottom:1px solid #BEBEBE; 
+ padding-bottom: 10px;
+  padding-top: 5px;
+  margin-bottom: 10px;
+ font-size:12px;
+ }
+  textarea {  
+  border-style: none; 
+  border-color: Transparent; 
+  overflow: auto;
+  outline: none;  
+  width:100%;
+   resize: none;
+   }
+#status_box_bottom{
+  overflow:hidden; 
+  background-color: #F6F7F8;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+#post_button{
+  font-size:12px;
+   font-weight: bold;
+  color:white;
+  background-color: #3b5998;
+  border:none;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:10px;
+  padding-right:10px;
+   float:right;
+ }
+ .post{
+ margin-top:10px;
+ border:1px solid #BEBEBE; 
+ padding: 5px 5px 5px 5px;
+ }
+ 
+ .author {
+   color:#3b5998;
+   text-decoration: none;
+ }
+ 
+ .activity{
+ color:#9197a3;  
+ }
+ .message{
+ margin-top:15px;
+ }
+ .actions{
+  color:#9197a3;  
+  font-size:11px;
+  clear:both;  
+ }
+ .actions a{
+ color:#9197a3;  
+ }
+ .shared_post{
+ border: 1px solid #9197a3;
+ padding: 5px 5px 5px 5px;
+ margin-top:15px;
+ overflow:hidden;
+
+ }
+
+ .shared_post a{
+  color:black;
+  text-decoration:none;
+  
+ }
+.link_caption{
+color:#9197a3;  
+ }
+ .link_name{
+ font-size:20px;
+  font-family:Times New Roman;
+ }
+ .link_desc p{
+ font-size:12px;
+ overflow:hidden;
+ } 

@@ -1,0 +1,180 @@
+@CHARSET "ISO-8859-1";
+*{
+font-family: helvetica, sans-serif;
+
+}
+
+body{
+ background: linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251));
+ background: -webkit-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Firefox 3.6 to 15 */
+  background-repeat:no-repeat;
+}
+#body_test h1{
+    color: #292929;
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+}
+#body_test{
+margin-right:5%;
+margin-left:5%;
+ height:100% ;  
+}
+.error{ /*validator error msg*/
+  color:red;
+}
+/*livescore*/
+ .tab-content{
+margin-top:15px;
+margin-bottom:15px;
+margin-left:10px;
+}
+#cricket img{
+margin-right:5px;
+}
+
+#cricket li a
+{
+  outline-color: transparent;
+}
+.score{
+  font-weight: 100;
+}
+#live-score,#deals,#gmail_outer,#search_box,#trending,#movies_outer, #calendar_outer,#todo, #facebook_outer, .news_feed_outer{
+ border: 1px solid;
+ border-color:#BEBEBE;
+ border-top: 3px solid #422150;
+ background:white;
+ margin-top:2%;  
+ padding-top: 1px;
+  padding-right: 10px;
+  padding-bottom: 25px;
+  padding-left: 10px; 
+}
+
+#add_feeds_modal h4{
+font-weight: bold;
+}
+h3{ /*feed name*/
+  font-size:18px;
+  color:#3f3f3f;
+  font-weight: 300;
+}
+.news_feed h3{ /*head lines*/
+  font-size: 16px;
+}
+.news_feed img{
+  margin-right:10px;
+}
+.yahoo_news_entry p{
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+}
+.time{
+  color:#9197a3;  
+  font-size: 12px;
+  margin-left:3px;
+ }
+
+nobr{ /*for google_news */
+  margin-left: 5px;
+}
+.lh a b{
+  font-size: 16px;
+}
+#wikipedia_-_did_you_know .entry li,#wikipedia_-_on_this_day .entry li{
+  text-decoration: none;
+  border-bottom:1px solid #E0DCDC;
+  padding-bottom: 10px;
+  padding-top:10px;
+}
+
+.deals2{
+  margin-bottom:10px;
+}
+#calendar {
+  font-size: 14px;
+  margin-top: 2%;
+}
+#calendar h2{
+  font-size: 16px;
+}
+
+.fc-time{ /*hide the start time for events eg:12a */;
+   display : none;
+}
+#trending{
+  font-weight:300 !important; 
+  text-align:left;
+
+}
+footer{
+  clear:both;
+  text-align: center;
+  color:black;
+  
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;  /* Height of the footer */   
+  display:block;
+
+}
+
+/*responsive styles*/
+@media only screen and (max-width:1024px) {
+
+  #body_test{
+    clear:both;   
+    margin-right: 0px !important ;
+    margin-left: 0px !important;
+    padding-left:0px !important;
+    padding-right:0px !important;
+  }
+  #text{  
+    visibility:hidden;
+  }
+  #search_box{
+    clear:both;
+    width:100%;
+  }  
+  #trending {
+   width:100%;
+   height:100%;
+   padding-left:5px !important;
+   padding-right:5px !important;
+   font:helvetica !important;
+   font-weight: none !important;
+
+ } 
+ #frame{
+   width: 100% !important;
+   height: 750px !important;
+ }
+ /*the playlist*/
+ .ytv-list {
+  top:50% !important;
+  height:50% !important;
+  left:0px !important;
+  clear:both !important;
+  display: block;
+  width:100% !important;
+
+  bottom:0px !important;
+}
+/*the video*/
+.ytv-video{
+ top:0px;
+ height:50% !important;
+ width:100% !important;
+
+ display: block;}
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+
+}
+
+

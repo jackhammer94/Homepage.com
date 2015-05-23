@@ -9,78 +9,57 @@ class PagesController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
+	{	if(!Auth::check())
+			Flash::message("please log in to save your preferences!");
 		return View::make('pages.index');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /pages/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+	public function deals(){
+		return View::make('pages.deals');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /pages
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+	public function games(){
+		return View::make('games.index', ['game'=>'monkey_lander']);
 	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /pages/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+	public function settings()
+	{			
+			return View::make('pages.settings');
+
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /pages/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+	public function update_email($id)
 	{
-		//
+		$user = User::find($id);
+		$user->email      = Input::get('email');
+		$email = $user->email;
+		$validation=Validator::make(array('email'=>$email),array('email'=>'unique:users')); 
+		if($validation->fails())
+			return  Redirect::back()->withInput()->withErrors($validation->messages());		
+		$user->save();
+		Flash::message('changes saved!');
+		return Redirect::to('/settings');
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /pages/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+	public function update_password($id)
 	{
-		//
+		$user = User::find($id);		
+		$validation=Validator::make(array('password'=>Input::get('password'),'password_confirmation'=> Input::get('password_confirmation') ),array('password'=>'required|min:6',  'password_confirmation' => 'required|same:password',)); 
+		if($validation->fails())
+			return  Redirect::back()->withInput()->withErrors($validation->messages());	
+		$user->password   = Hash::make(Input::get('password'));
+		$user->save();
+		Flash::message('changes saved!');
+		return Redirect::to('/settings');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /pages/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+	public function get_movies(){
+		$movies = DB::select('select * from movies where type=? ', ["nowplaying"]);
+		echo json_encode($movies);
 	}
 
+	public function get_upcoming_movies(){
+		$movies = DB::select('select * from movies where type=? ', ["upcoming"]);
+		echo json_encode($movies);
+	}
 }

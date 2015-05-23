@@ -2,7 +2,7 @@
 @section('meta-title', 'register')
 @section('content')
 
-      <div class="starter-template">
+      <div class='col-lg-4 col-lg-offset-4'>
         <h3><b>Register</b></h3>
         {{Form::open(['route'=>'registration.store'])}}
 	        <div class="form-group">

@@ -1,0 +1,80 @@
+@CHARSET "ISO-8859-1";
+
+
+.caption-text
+{   
+	width:100%;
+	background: black;
+	opacity:0.7;    
+  position:absolute;   
+  color:white !important;  
+  font-weight:300 !important;
+  font-size:15px;      
+  left:0px;
+  bottom:0px;
+  text-align:center;
+  overflow: hidden;
+ /* border:hidden;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:5px;*/
+}
+.caption-text span{
+  position: relative;
+  white-space: nowrap;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.color{
+  color:red !important;
+}
+.create{
+  position:absolute;
+  top:0px  !important;
+  right:0px  !important;  
+  display:block; 
+   border:none;
+  background:#f3f3f3;
+
+}
+.tile {
+  position:relative;
+  margin: 5px 5px 0px 0px ;
+  padding: 3.5%; 
+  float: left; 
+  /*width: 90px; 
+  height: 90px;*/
+  border: 1px solid #BEBEBE;
+  background: white;
+  border-radius: 0px;
+}
+/*.tile a{
+   width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}*/
+.filled{               /*white colored buttons */
+ 
+ background: white;
+}
+.grid {
+  margin: 0 ;
+  padding: 0px; 
+}
+.btn-group{
+  margin-top:10px;
+}
+#dialog label, #dialog input { display:block; }
+#dialog label { margin-top: 0.5em; }
+#dialog input, #dialog textarea { width: 95%; }
+#tabs { margin-top: 1em; }
+#tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+#add_tab { cursor: pointer; }
+#tabs li button {
+ margin-top:0;
+    margin-right:0px;
+ font-size: 75%;
+
+ }

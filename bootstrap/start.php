@@ -31,8 +31,8 @@ $app = new Illuminate\Foundation\Application;
 ));
 */
 $env = $app->detectEnvironment(function()
-{
-	return getenv('APP_ENV')?:'local';
+{ //var_dump(gethostname());
+	 return gethostname() == 'Andrew' ? 'local' : 'production';//return getenv('APP_ENV')?:'local';
 });
 
 /*
