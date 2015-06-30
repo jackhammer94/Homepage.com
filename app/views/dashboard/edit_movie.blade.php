@@ -1,8 +1,8 @@
 @extends('layouts.master')
  
-@section('title') Create User @stop
+@section('title') Edit movie @stop
  
-@section('content')
+@section('content_with_no_sidebar')
  
 <div >   
 

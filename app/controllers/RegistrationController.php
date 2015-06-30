@@ -57,7 +57,7 @@ class RegistrationController extends \BaseController {
 		$user->save();
 
 		 Mail::send('emails.verification', array('email'=>Input::get('email'),'confirmation_code'=>$confirmation_code), function($message){
-	        $message->to(Input::get('email'))->subject('Welcome to Homepage.com!');
+	        $message->to(Input::get('email'))->subject('Welcome to Myfrontpage.in!');
    		 });
 
 	Auth::login($user);
@@ -152,7 +152,7 @@ class RegistrationController extends \BaseController {
     	$user->confirmation_code  = $confirmation_code;
     	$user->save();
     	Mail::send('emails.verification', array('email'=>Input::get('email'),'confirmation_code'=>$confirmation_code), function($message){
-	        $message->to(Input::get('email'))->subject('Welcome to Homepage.com!');
+	        $message->to(Input::get('email'))->subject('Welcome to Myfrontpage.in!');
 	    });
 	    Flash::message('Activation mail has been resent!');
 	    return Redirect::back();

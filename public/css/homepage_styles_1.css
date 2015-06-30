@@ -1,68 +1,222 @@
 @CHARSET "ISO-8859-1";
 *{
-font-family: helvetica, sans-serif;
+  font-family: helvetica, sans-serif;
 
 }
-
+html{
+  height:100%;
+}
 body{
- background: linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251));
- background: -webkit-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(rgb(133, 94, 150), rgb(250, 250, 251)); /* For Firefox 3.6 to 15 */
-  background-repeat:no-repeat;
+ background: linear-gradient(rgb(140, 72, 152), rgb(205, 197, 208));
+ background: -webkit-linear-gradient(rgb(140, 72, 152), rgb(205, 197, 208)); /* For Safari 5.1 to 6.0 */
+ background: -o-linear-gradient(rgb(140, 72, 152), rgb(205, 197, 208)); /* For Opera 11.1 to 12.0 */
+ background: -moz-linear-gradient(rgb(140, 72, 152), rgb(205, 197, 208)); /* For Firefox 3.6 to 15 */
+ background-repeat:no-repeat;
+ background-attachment: fixed;
 }
-#body_test h1{
-    color: #292929;
+
+#logo_container h1{
+  color: #292929;
   font-family: 'Oswald', sans-serif;
   font-size: 28px;
-}
-#body_test{
-margin-right:5%;
-margin-left:5%;
- height:100% ;  
 }
 .error{ /*validator error msg*/
   color:red;
 }
-/*livescore*/
- .tab-content{
-margin-top:15px;
-margin-bottom:15px;
-margin-left:10px;
+.fa-wikipedia:before { 
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 400; 
+  content: "VV"; 
+  letter-spacing:-0.45em; 
+  margin-right:0.5em;
 }
-#cricket img{
-margin-right:5px;
+#Search_box{
+  padding-top:5px;
+}
+#trending-searches img{
+  width:55px;
+  height:55px;
+  margin-right:10px;
+  margin-top: 5px;
+}
+@media (max-width:500px) { 
+  #Search_box .input-group-btn, #Search_box .input-group .form-control {
+    display: block;
+    margin-bottom: 10px;
+    width:100%;
+    clear: both;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+  }
+  #Search_box .input-group-btn .btn {
+    width: 20%;
+
+  }
+  #Search_box .input-group-btn .btn:first-child {
+   border-top-left-radius: 4px;
+   border-bottom-left-radius: 4px;
+   margin-left:2px;
+ }
+ #Search_box .input-group {
+  display: block;
+}
+}
+/*livescore*/
+.carousel-inner>.item {
+  padding-left:30px;
+  /*margin-top:15px;*/
+}
+.carousel-control.left , .carousel-control.right{
+  background-image: none;
+}
+.carousel-control{
+  width:3%;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
+  color:gray;
+  font-size: 18px ;
+  top:54%;
+  text-shadow:none ;
+}
+.carousel-control .glyphicon-chevron-left:hover, .carousel-control .glyphicon-chevron-right:hover{
+  color:black;
+}
+.tab-content{
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.tab-content #cricket-1 , #movies_outer .tab-content{
+  margin-left:10px;
+}
+#cricket_outer{
+  padding-bottom:0px !important;
+}
+#cricket_outer table{
+  margin-bottom: 0px;
+}
+#cricket_outer table td{
+  border-top:none ;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+#cricket_outer #pastMatchCarousel table tr td:first-of-type{
+  width:15% ;
+}
+#cricket_outer #pastMatchCarousel table tr td:nth-child(2) {
+ width:20% ;
+ border-left: 1px solid #DDD;
+ text-align: center;
+}
+#cricket_outer #pastMatchCarousel table tr td:nth-child(3) {
+ border-left: 1px solid #DDD;
+ padding-left:20px;
+}
+#cricket_outer #upcomingMatchCarousel table tr td:first-of-type {
+  width: 4%;
+}
+#cricket_outer #upcomingMatchCarousel table tr td:nth-child(2) {
+ width:25% ;
+ border-left: 1px solid #DDD;
+ padding-left:20px;
+ text-align: left;
+}
+.game-result{
+  font-weight:bold;
+}
+#cricket_outer img{
+  margin-right:10px;
+  width:25px;
 }
 
-#cricket li a
+#cricket_outer li a
 {
   outline-color: transparent;
 }
 .score{
   font-weight: 100;
 }
-#live-score,#deals,#gmail_outer,#search_box,#trending,#movies_outer, #calendar_outer,#todo, #facebook_outer, .news_feed_outer{
+.teams{
+  width:20%;
+}
+.score, .teams{
+  border-top: none !important;
+}
+.series_name{
+  font-style: italic;
+}
+#gmail_outer a{
+  text-decoration: none;
+}
+.application,#deals,.news_feed_outer{
  border: 1px solid;
- border-color:#BEBEBE;
- border-top: 3px solid #422150;
+ border-color:transparent;
+ border-top: 2px solid #422150;
  background:white;
  margin-top:2%;  
  padding-top: 1px;
-  padding-right: 10px;
-  padding-bottom: 25px;
-  padding-left: 10px; 
+ padding-right: 10px;
+ padding-bottom: 25px;
+ padding-left: 10px; 
+ overflow: hidden;
+}
+.channel_outer{
+  padding-top:5px;
+  padding-bottom:0px;
+}
+.panel-collapse{
+  overflow: hidden;
+}
+.well{
+  background-color: rgba(191, 171, 200, 0.06);
+}
+.channels th{
+  width:10%;
+}
+#tv_schedule_modal .table{
+  table-layout: fixed;
+}
+button.channelLogoBox img {
+  width: 75px;
+  height: 75px;
+  padding: 9px;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-bottom-color: #ccc;
+}
+button.channelLogoBox:hover {
+  background: #BD7EE2;
 }
 
-#add_feeds_modal h4{
-font-weight: bold;
+button.channelLogoBox {
+  float: left;
+  padding: 2px;
+  margin: 5px 5px 0 0;
+  background: #f9f9f9;
+  position: relative;
+  text-decoration: none;
+  margin-left:3px;
 }
-h3{ /*feed name*/
+#tv_schedule_modal h4,#add_feeds_modal h4{
+  font-weight: bold;
+}
+#tv_schedule_modal .modal-title, #add_feeds_modal .modal-title{
+  text-align:center;
+}
+.channel_outer button{
+  background: transparent;
+  border: none;
+}
+.panel-title > a{/*make whole title div clickable in the modal*/
+  display:block;
+}
+#content h3{ /*feed name*/
   font-size:18px;
   color:#3f3f3f;
   font-weight: 300;
 }
+
 .news_feed h3{ /*head lines*/
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .news_feed img{
   margin-right:10px;
@@ -76,7 +230,7 @@ h3{ /*feed name*/
   color:#9197a3;  
   font-size: 12px;
   margin-left:3px;
- }
+}
 
 nobr{ /*for google_news */
   margin-left: 5px;
@@ -94,87 +248,18 @@ nobr{ /*for google_news */
 .deals2{
   margin-bottom:10px;
 }
-#calendar {
+#calendar_outer {
   font-size: 14px;
   margin-top: 2%;
 }
-#calendar h2{
+#calendar_outer h2{
   font-size: 16px;
 }
 
-.fc-time{ /*hide the start time for events eg:12a */;
-   display : none;
-}
-#trending{
-  font-weight:300 !important; 
-  text-align:left;
-
-}
-footer{
-  clear:both;
-  text-align: center;
-  color:black;
-  
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:60px;  /* Height of the footer */   
-  display:block;
-
+#footer{
+  font-size:11px;
+  margin-top:2%;  
 }
 
-/*responsive styles*/
-@media only screen and (max-width:1024px) {
-
-  #body_test{
-    clear:both;   
-    margin-right: 0px !important ;
-    margin-left: 0px !important;
-    padding-left:0px !important;
-    padding-right:0px !important;
-  }
-  #text{  
-    visibility:hidden;
-  }
-  #search_box{
-    clear:both;
-    width:100%;
-  }  
-  #trending {
-   width:100%;
-   height:100%;
-   padding-left:5px !important;
-   padding-right:5px !important;
-   font:helvetica !important;
-   font-weight: none !important;
-
- } 
- #frame{
-   width: 100% !important;
-   height: 750px !important;
- }
- /*the playlist*/
- .ytv-list {
-  top:50% !important;
-  height:50% !important;
-  left:0px !important;
-  clear:both !important;
-  display: block;
-  width:100% !important;
-
-  bottom:0px !important;
-}
-/*the video*/
-.ytv-video{
- top:0px;
- height:50% !important;
- width:100% !important;
-
- display: block;}
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-
-}
 
 

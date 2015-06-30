@@ -2,7 +2,7 @@
 @section('head')
 <script src='//static.miniclipcdn.com/js/game-embed.js'></script>
 @stop
-@section('content')
+@section('content_with_no_sidebar')
 @include('games.list')
 <!-- Place this code where you'd like the game to appear -->
 <div id="game">

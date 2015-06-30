@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('head')
-<script>
-
-$(function () {
-	$('#cricket a:first').tab('show')
-})
-
-</script>
+<script src="/js/moment.min.js"></script>
 <script src="/js/livescoreTest.js"></script>
 @stop
-@section('content')
+@section('content_with_no_sidebar')
 
 <div class="col-sm-12" id="live-score">
 	<h3  >Cricket</h3>
@@ -21,14 +15,37 @@ $(function () {
 		</ul>
 		<div class="tab-content">
 			<div id="cricket-1"   role="tabpanel" class="tab-pane active" >
-				<div  id="live" class="LIVE"><i class="fa fa-spinner fa-pulse"></i> searching..</div>
-				<div  id="live1" class="LIVE1 "></div>
-				<div  id="live2" class="LIVE2 "></div>
-				<div  id="live3" class="LIVE3 "></div>
-				<div  id="live4" class="LIVE4 "></div>
+				<div class='loader'><i class="fa fa-spinner fa-pulse"></i> searching..</div>
 			</div>
-			<div id="cricket-2"  role="tabpanel" class="past-matches tab-pane "></div>
-			<div id="cricket-3"   role="tabpanel" class="upcoming-matches tab-pane "></div>	
+			<div id="cricket-2"  role="tabpanel" class="past-matches tab-pane ">
+				<div id="pastMatchCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="true">
+			    <!-- Wrapper for slides -->
+			    <div class="carousel-inner" role="listbox">
+			    </div>
+			    <!-- Left and right controls -->
+			    <a class="left carousel-control" href="#pastMatchCarousel" role="button" data-slide="prev" style="display:none">
+			      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    </a>
+			    <a class="right carousel-control" href="#pastMatchCarousel" role="button" data-slide="next">
+			      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    </a>
+			  </div>
+			</div>
+			<div id="cricket-3"   role="tabpanel" class="upcoming-matches tab-pane ">
+				<div id="upcomingMatchCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+			    <!-- Wrapper for slides -->
+			    <div class="carousel-inner" role="listbox">
+			    </div>
+			    <!-- Left and right controls -->
+			    <a class="left carousel-control" href="#upcomingMatchCarousel" role="button" data-slide="prev" style="display:none">
+			      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    </a>
+			    <a class="right carousel-control" href="#upcomingMatchCarousel" role="button" data-slide="next">
+			      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			      
+			    </a>
+			  </div>
+			</div>	
 		</div>
 	</div> 
 </div>

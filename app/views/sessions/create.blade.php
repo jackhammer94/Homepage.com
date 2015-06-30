@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('meta-title', 'log in')
-@section('content')
+@section('content_with_no_sidebar')
  <div class='col-lg-4 col-lg-offset-4'>
 	<h3><b>Log In</b></h3>
 	{{Form::open(['route'=>'sessions.store'])}}

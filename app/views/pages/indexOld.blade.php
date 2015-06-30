@@ -39,150 +39,143 @@ google.load("feeds", "1")
 
 
 
-<div id='body_test' >
+{{--  <div class="col-sm-12" id="search_box">
+ 	<h3>Search</h3>
+ 	<form  target="_blank" role="form" id="search" autocomplete="off">
+ 		<div class="form-group ">
+ 			<div class="row">
+ 				<div class="col-sm-12">
+ 					<div class="input-group">
+ 						<input type="text" name="q" size="40" maxlength="255" value="" id="input" class="form-control " placeholder="what are you looking for?" >			
+ 						<div class="input-group-btn">			
+ 							<button id = "google_button" type="button"  value="Google" class="btn btn-default  btn-responsive" title="search google">
+ 								<i class="fa fa-google fa-lg"></i> 
+ 							</button>
+ 							<button id = "wikipedia_button" type="button"  value="Wikipedia" class="btn btn-default  btn-responsive" title="search wikipedia">
+ 								<i class="fa fa-wikipedia"></i> 
+ 							</button>
+ 							<button id ="youtube_button" type="button"  value="youtube" class="btn btn-default  btn-responsive" title="search youtube">
+ 								<i class="fa fa-youtube fa-lg"></i> 
+ 							</button>
+ 							<button id = "imdb_button" type="button"  value="Imdb" class="btn btn-default  btn-responsive" title="search imdb">
+ 								<i class="fa  fa-film fa-lg"></i> 
+ 							</button>
+ 							<button id = "flipkart_button" type="button"  value="Flipkart" class="btn btn-default  btn-responsive" title="search flipkart">
+ 								<i class="fa fa-shopping-cart fa-lg"></i> 
+ 							</button>
+ 						</div>
+ 					</div><!-- end of input group -->
+ 				</div><!-- end of col -->
+ 			</div><!-- end of row -->	
+ 		</div><!--end of form-group-->
+ 	</form>
+ 	<div id="trending-searches" class="row">
+ 		<div class="col-md-3" id="search-0"></div><div  class="col-md-3" id="search-1"></div><div  class="col-md-3" id="search-2"></div><div  class="col-md-3" id="search-3"></div>
+ 	</div>	
+ </div><!-- end of search-->
 
-	<img style="float:left; width:35px ;height:30px; margin-right:10px;" src="/img/home.png"/><h1>my FRONTPAGE <button class="btn btn-sm btn-default pull-right"  id="add_feeds">add feeds</button></h1>
-	
+ <div class="col-sm-12" id="live-score">
+ 	<h3  >Cricket</h3>
+ 	<div id="cricket" role="tabpanel">		
+ 		<ul class="nav nav-tabs" role="tablist">
+ 			<li role="presentation" class="active"><a href="#cricket-1" aria-controls="cricket-1" role="tab" data-toggle="tab">live</a></li>
+ 			<li role="presentation"><a href="#cricket-2" aria-controls="cricket-2" role="tab" data-toggle="tab">recent</a></li>
+ 			<li role="presentation"><a href="#cricket-3" aria-controls="cricket-3" role="tab" data-toggle="tab">upcoming</a></li>
+ 		</ul>
+ 		<div class="tab-content">
+ 			<div id="cricket-1"   role="tabpanel" class="tab-pane active" >
+ 				<div class='loader'><i class="fa fa-spinner fa-pulse"></i> searching..</div>
+ 			</div>
+ 			<div id="cricket-2"  role="tabpanel" class="past-matches tab-pane ">
+ 				<div id="pastMatchCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+ 					<!-- Wrapper for slides -->
+ 					<div class="carousel-inner" role="listbox">
+ 					</div>
+ 					<!-- Left and right controls -->
+ 					<a class="left carousel-control" href="#pastMatchCarousel" role="button" data-slide="prev" style="display:none">
+ 						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+ 						<span class="sr-only">Previous</span>
+ 					</a>
+ 					<a class="right carousel-control" href="#pastMatchCarousel" role="button" data-slide="next">
+ 						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+ 						<span class="sr-only">Next</span>
+ 					</a>
+ 				</div>
+ 			</div>
+ 			<div id="cricket-3"   role="tabpanel" class="upcoming-matches tab-pane ">
+ 				<div id="upcomingMatchCarousel" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
+ 					<!-- Wrapper for slides -->
+ 					<div class="carousel-inner" role="listbox">
+ 					</div>
+ 					<!-- Left and right controls -->
+ 					<a class="left carousel-control" href="#upcomingMatchCarousel" role="button" data-slide="prev" style="display:none">
+ 						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+ 						<span class="sr-only">Previous</span>
+ 					</a>
+ 					<a class="right carousel-control" href="#upcomingMatchCarousel" role="button" data-slide="next">
+ 						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+ 						<span class="sr-only">Next</span>
+ 					</a>
+ 				</div>
+ 			</div>	
+ 		</div>
+ 	</div> 
+ </div>
 
-	{{-- <div id='favorites' class="col-sm-12">
-		<h3>Favorites</h3>
-		<ul></ul>   
-	</div>	 --}}	
+ <div id="feeds">
+ </div>
+ @include('layouts/partials/gmail')
+ <div id='calendar_outer' class="col-sm-12">
+ 	<h3>Calendar</h3>
+ 	<div id='calendar'>
+ 	</div>
+ 	<p style="margin-top:10px; opacity:0.6;">Click on a date to add resizable and draggable events.</p>
+ </div>
 
-	<div class="col-sm-12" id="google-search-test">
-		<h3>Search</h3>
-		<center>
-			<form action="" target="_blank" role="form" id="search" autocomplete="off">
-				<div class="form-group ">
-					<div class="row">
-						<div class="col-sm-9">
-							<div class="input-group">
-								<input type="text" name="q" size="40" maxlength="255" value="" id="input" class="form-control " placeholder="what are you looking for?" >			
-								<span class="input-group-btn">			
-									<button type="button" onclick="submitForm('https://www.google.co.in','/search?q=')" value="Google" class="btn btn-default  btn-responsive" title="search google"/>
-									<i class="fa fa-google fa-lg"></i> <span id="button-text"></span>
-								</button>
-								<button type="button" onclick="submitForm('http://en.wikipedia.org','/wiki/Special:Search?search=')" value="Wikipedia" class="btn btn-default  btn-responsive" title="search wikipedia"/>
-								<i class="icon-wikipedia"></i> <span id="button-text"></span>
-							</button>
-							<button type="button" onclick="submitForm('https://www.youtube.com','/results?q=')" value="youtube" class="btn btn-default  btn-responsive"title="search youtube"/>
-							<i class="fa fa-youtube fa-lg"></i> <span id="button-text"></span>
-						</button>
-						<button type="button" onclick="submitForm('http://www.imdb.com','/find?ref_=nv_sr_fn&q=')" value="Imdb" class="btn btn-default  btn-responsive" title="search imdb"/>
-						<i class="fa  fa-film fa-lg"></i> <span id="button-text"></span>
-					</button>
-					<button type="button" onclick="submitForm('http://www.flipkart.com','/search?q=')" value="Flipkart" class="btn btn-default  btn-responsive" title="search flipkart"/>
-					<i class="fa fa-shopping-cart fa-lg"></i> <span id="button-text"></span>
-				</button>
-			</span>
-		</div><!-- end of input group -->
-	</div><!-- end of col -->
-</div><!-- end of row -->	
-</div><!--end of form-group-->
-</form>
-</center>		
-</div><!-- end of search-->
+ <div class="col-sm-12 " id="todo">
+ 	<h3>To Do</h3>
+ 	<form role="form" onkeypress="return event.keyCode != 13;">
+ 		<div class="form-group  ">
+ 			<div class="row">
+ 				<div class="col-sm-8">
+ 					<div class="input-group">
+ 						<input type="text"  maxlength="150"  class="form-control" id="task" placeholder="add new task">
+ 						<span class="input-group-btn">	
+ 							<button type="button" id="add_task_button" value="" class="btn btn-default  btn-responsive" title="add">
+ 								<i class="fa fa-plus"></i> add
+ 							</button>
+ 						</span>	
+ 					</div><!--end of input group-->
+ 				</div><!--end of col-->
+ 			</div><!--end of row-->
+ 		</div>
+ 	</form>
+ </div>
+ <div id='tv_schedule_outer' class="col-sm-12">
+ 	<h3>TV schedule</h3>
+ 	<div id='tv_schedule'>
+ 	</div>
+ 	<button id='add_channel_button' class='btn btn-primary'>Add channels</button>
+ </div>
 
-<div class="col-sm-12" id="live-score">
-	<h3  >Cricket</h3>
-	@include('layouts/partials/livescore')
-</div>
-<script src="/js/livescore.js"></script>
+ <div id='movies_outer' class="col-sm-12">
+ 	<h3 >Movies</h3>
+ 	<div id="movies_tabs" role="tabpanel">		
+ 		<ul class="nav nav-tabs" role="tablist">
+ 			<li role="presentation" class="active"><a href="#nowplaying" aria-controls="nowplaying" role="tab" data-toggle="tab">Now showing</a></li>
+ 			<li role="presentation"><a href="#upcoming" aria-controls="upoming" role="tab" data-toggle="tab">Upcoming</a></li>
+ 		</ul>
+ 		<div class="tab-content">
+ 			<div id="nowplaying"   role="tabpanel" class="tab-pane active" ></div>
+ 			<div id="upcoming"  role="tabpanel" class=" tab-pane "></div>
+ 		</div>
+ 	</div> 
+ </div>
 
-<div id="feeds">
-	{{-- <div class="col-sm-12" id="news-feed" >
-		<h3  >Top Stories</h3>					
-
-		<ul class="newsticker" id='feed1'></ul>
-
-		<div align="center"> 
-			<ul class="pagination" style="margin: 4px;">
-				<li><span class="glyphicon glyphicon-chevron-down" id="next-button"></span></li>
-				<li><span class="glyphicon glyphicon-chevron-up" id="prev-button"></span></li>
-
-			</ul>
-			<div class="clearfix"></div>
-		</div>	   
-	</div>    --}}
-</div>
-
-
-<script src="/js/add_feeds_test.js"></script>
-
-<script type="text/javascript" src="/js/search.js"></script>   
-
-<script type = "text/javascript" src = "/js/gmail.js"></script>
-<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-<div id = "gmail_outer"  class="col-sm-12">
-	<h3>Gmail</h3>
-	<div id="gmail" class ="container-fluid">
-		<button id="authorize-button" class="btn btn-xs btn-primary" style="visibility: hidden">Log In</button>
-		<div id = "mail_loader" align="center" style="vertical-align:middle;"> <i   class="fa fa-spinner fa-pulse"></i></div>
-	</div>
-</div>
-
-
-<div id='calendar_outer' class="col-sm-12">
-	<h3>Calendar</h3>
-	<div id='calendar'>
-	</div>
-	<p style="margin-top:10px; opacity:0.6;">Click on a date to add resizable and draggable events.</p>
-</div>
-<div id="dialog" title="" style="display:none;">Are you sure want to delete it?</div>
-<script type="text/javascript" src="/js/calendar.js"></script>
-
-<div class="col-sm-12 " id="todo">
-	<h3>To Do</h3>
-	<form role="form" onkeypress="return event.keyCode != 13;">
-		<div class="form-group  ">
-			<div class="row">
-				<div class="col-sm-8">
-					<div class="input-group">
-						<input type="text"  maxlength="150"  class="form-control" id="task" placeholder="add new task">
-						<span class="input-group-btn">	
-							<button type="button" id="add_task_button" onclick="add_task()" value="" class="btn btn-default  btn-responsive" title="add"/>
-							<i class="fa fa-plus"></i> add
-						</button>
-					</span>	
-				</div><!--end of input group-->
-			</div><!--end of col-->
-		</div><!--end of row-->
-	</div>
-</form>
-</div>
-<script type="text/javascript" src='/js/todo.js'></script>
-
-
-
-
-
-<div id='movies_outer' class="col-sm-12">
-	<h3 >Movies</h3>
-	<div id="movies_tabs" role="tabpanel">		
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#nowplaying" aria-controls="nowplaying" role="tab" data-toggle="tab"><b>Now showing</b></a></li>
-			<li role="presentation"><a href="#upcoming" aria-controls="upoming" role="tab" data-toggle="tab"><b>Upcoming</b></a></li>
-		</ul>
-		<div class="tab-content">
-			<div id="nowplaying"   role="tabpanel" class="tab-pane active" ></div>
-			<div id="upcoming"  role="tabpanel" class=" tab-pane "></div>
-		</div>
-	</div> 
-</div>
-
-<div id="trending" class="col-sm-12" >
-	<h3 >Trending on Youtube</h3>
-	<div id="frame"></div>		
-	<script type="text/javascript" src="/js/ytv.js"></script>
-	<script>		
-	window.controller = new YTV('frame', {
-		user:'youtube',					
-		playlist:'PL_yIBWagYVjyyqx_qPkbat5zufWZOyZEZ'
-
-	});
-	</script>			  	
-</div>  
-</div> <!-- end body-test-->
+ <div id="trending" class="col-sm-12" >
+ 	<h3 >Trending on Youtube</h3>
+ 	<div id="frame"></div>		
+ </div>  --}} 
 <div id="footer">
 	<div class="container-fluid">
 		<p align = 'center' class="muted credit"><a href="privacypolicy.htm" target='blank'>Privacy policy</a></p>

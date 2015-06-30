@@ -21,7 +21,7 @@ class RemindersController extends Controller {
 	{
 		switch ($response = Password::remind(Input::only('email'),function($message)
 		{
-		    $message->subject('Password Reset - Homepage.com');
+		    $message->subject('Password Reset - Myfrontpage.in');
 		}))
 		{
 			case Password::INVALID_USER:

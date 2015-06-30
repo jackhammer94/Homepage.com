@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('content')
+@section('content_with_no_sidebar')
 
 <div id="deals" class="col-sm-12">	 	 
 	<h3 >hot deals from amazon</h3>

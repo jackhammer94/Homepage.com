@@ -2,7 +2,7 @@
 
 @section('title') Dashboard @stop
 
-@section('content')
+@section('content_with_no_sidebar')
 
 <div class="container-fluid">
     <h1><i class="fa fa-film"></i> movies</h1>
@@ -98,7 +98,7 @@ function backup(){
         jsonp: "callback",
         dataType: "jsonp",
         data: {
-            q: 'select * from html where url="http://in.bookmyshow.com/chennai/movies/nowshowing" and xpath="//*[@id=\'divComingSoon\']/ul[1]"',
+            q: 'select * from html where url="http://in.bookmyshow.com/chennai/movies/nowshowing" and xpath="//*[@id=\'divComingSoon\']/ul[1]" limit 10',
             format: "json"
         },
         // Work with the response
@@ -110,7 +110,7 @@ function backup(){
             // console.log('img ', results.ul.li[0].div.div[0].img.src )
             // console.log('title', results.ul.li[0].div.div[1].ul.li[0].a.content);
             // console.log('plot ', results.ul.li[0].div.div[1].ul.li[1].blockquote.content);
-            for (var i=0;i<results.ul.li.length;i++){
+            for (var i=0;i<10;i++){
                 var title = results.ul.li[i].div.div[1].ul.li[0].a.content;
                 var img_src  = results.ul.li[i].div.div[0].img.src;
                 var overview  = results.ul.li[i].div.div[1].ul.li[1].blockquote.content;
@@ -154,7 +154,7 @@ function backup_upcoming_movies(){
         jsonp: "callback",
         dataType: "jsonp",
         data: {
-            q: 'select * from html where url="http://in.bookmyshow.com/chennai/movies/comingsoon" and xpath="//*[@id=\'divComingSoon\']/ul[1]"',
+            q: 'select * from html where url="http://in.bookmyshow.com/chennai/movies/comingsoon" and xpath="//*[@id=\'divComingSoon\']/ul[1]" limit 10',
             format: "json"
         },
         // Work with the response
@@ -166,7 +166,7 @@ function backup_upcoming_movies(){
             // console.log('img ', results.ul.li[0].div.div[0].img.src )
             // console.log('title', results.ul.li[0].div.div[1].ul.li[0].a.content);
             // console.log('plot ', results.ul.li[0].div.div[1].ul.li[1].blockquote.content);
-            for (var i=0;i<results.ul.li.length;i++){
+            for (var i=0;i<10;i++){
                 var title = results.ul.li[i].div.div[1].ul.li[0].a.content;
                 var img_src  = results.ul.li[i].div.div[0].img.src;
                 var overview  = results.ul.li[i].div.div[1].ul.li[1].blockquote.content;

@@ -2,7 +2,7 @@
 
 @section('title') Settings @stop
 
-@section('content')
+@section('content_with_no_sidebar')
 
 <div class='col-lg-4 col-lg-offset-4'>
 

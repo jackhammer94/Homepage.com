@@ -1,14 +1,22 @@
 @extends('layouts.master')
-
+@section('head')
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#user_table').dataTable();
+});
+</script>
+@stop
 @section('title') Dashboard @stop
 
-@section('content')
+@section('content_with_no_sidebar')
 
 <div class="container-fluid">
   <h1><i class="fa fa-users"></i> Dashboard </h1>
 
   <div class="table">
-    <table class="table table-bordered table-striped">
+    <table  class="table table-bordered table-striped">
 
         <thead>
             <tr>
@@ -38,7 +46,7 @@
 <h1><i class="fa fa-users"></i> User Administration</h1>
  
     <div class="table">
-        <table class="table table-bordered table-striped">
+        <table id = 'user_table' class="table table-bordered table-striped">
  
             <thead>
                 <tr>
@@ -47,8 +55,9 @@
                     <th>Email</th>
                     <th>Confirmed</th>
                     <th>Date Joined</th>
-                       <th>no of tasks</th>
-                       <th>no of events</th>
+                    <th>no of tasks</th>
+                    <th>no of events</th>
+                    <th>no of feeds</th>
                     {{--  <th>Edit/Delete</th> --}}
                    
                 </tr>
@@ -62,8 +71,9 @@
                     <td>{{ $user->email }}</td>   
                     <td>{{ $user->confirmed }}</td>                 
                     <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
-                    <td>{{ $no_of_tasks[$i]}}</td>
-                    <td>{{ $no_of_events[$i++]}}</td>
+                    <td>{{ $user->tasks}}</td>
+                    <td>{{ $user->events}}</td>
+                    <td>{{ $user->feeds}}</td>
                    {{--  <td>
                         <a href="/admin/users/{{ $user->id }}/edit" class="btn btn-xs btn-info pull-left" style="margin-right: 3px;">Edit</a>
                         {{ Form::open(['url' => '/admin/users/' . $user->id, 'method' => 'DELETE']) }}
@@ -76,10 +86,9 @@
             </tbody>
  
         </table>
-        <div class='container'>{{$users->links()}}</div>
+       {{--  <div class='container'>{{$users->links()}}</div> --}}
     </div>
  
-    <a href="/admin/users/create" class="btn btn-success">Add User</a>
     <a href="/admin/movies" class="btn btn-success">Movies</a>
     <a href="/admin/feeds" class="btn btn-success">feeds</a>
 </div>

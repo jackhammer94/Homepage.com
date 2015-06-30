@@ -30,8 +30,8 @@
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->username}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/settings"><span class="glyphicon glyphicon-cog"></span>settings</a></li> 
-                  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>logout</a></li> 
+                  <li><a href="/settings"><span class="glyphicon glyphicon-cog"></span> settings</a></li> 
+                  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> logout</a></li> 
                 </ul>
               </li>
             </ul>

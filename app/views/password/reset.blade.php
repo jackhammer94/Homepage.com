@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content')
+@section('content_with_no_sidebar')
 	<h3><b>Set Your New Password</b></h3>
 
 	{{Form::open()}}

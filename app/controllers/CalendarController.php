@@ -48,6 +48,17 @@ class CalendarController extends \BaseController {
 
 		}
 	}
+	public function update_event_title(){
+		if(Auth::check())
+		{
+			$update = Input::all();
+			DB::update('update events set  title=? where id=?  ',[ $update['title'],$update['id']]);
+		}
+		else
+		{
+
+		}
+	}
 
 	public function delete_event(){
 		if(Auth::check())
