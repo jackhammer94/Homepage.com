@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function nowplaying() {
-
+ $("#nowplaying").append("<div class= 'feed_loader' align='center' style='vertical-align:middle;'> <i   class='fa fa-spinner fa-pulse'></i></div>");
 	$.ajax({
 		url: "https://query.yahooapis.com/v1/public/yql",
 		jsonp: "callback",
@@ -20,7 +20,7 @@ function nowplaying() {
 			console.log('nowplaying: ', data);
 			var results = data.query.results;
 			if (results) {
-				
+				$("#nowplaying").empty();
 				for (var i = 0; i < 10; i++) {
 					var title = results.ul.li[i].div.div[1].ul.li[0].a.content;
 					var img_src = results.ul.li[i].div.div[0].img.src;
@@ -44,6 +44,7 @@ function nowplaying() {
 
 						var obj = JSON.parse(data);
 						console.log('movies retrieved from db successfully', obj);
+						$("#nowplaying").empty();
 						for (var i = 0; i < obj.length; i++) {
 							var title = obj[i].title;
 							var img_src = obj[i].image;
@@ -70,7 +71,7 @@ function nowplaying() {
 }
 
 function upcoming() {
-
+$("#upcoming").append("<div class= 'feed_loader' align='center' style='vertical-align:middle;'> <i   class='fa fa-spinner fa-pulse'></i></div>");
 		$.ajax({
 			url: "https://query.yahooapis.com/v1/public/yql",
 			jsonp: "callback",
@@ -85,7 +86,7 @@ function upcoming() {
 				console.log('upcoming: ', data);
 				var results = data.query.results;
 				if (results) {
-
+					$("#upcoming").empty();
 					for (var i = 0; i < 10; i++) {
 						var title = results.ul.li[i].div.div[1].ul.li[0].a.content;
 						var img_src = results.ul.li[i].div.div[0].img.src;
@@ -106,7 +107,7 @@ function upcoming() {
 						type: "GET",
 						async: false,
 						success: function(data) {
-
+							$("#upcoming").empty();
 							var obj = JSON.parse(data);
 							console.log('upcoming movies retrieved from db successfully', obj);
 							for (var i = 0; i < obj.length; i++) {

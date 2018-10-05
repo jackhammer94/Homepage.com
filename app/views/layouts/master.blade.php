@@ -47,7 +47,7 @@
   @endif
   @if(Request::path() !== '/')
   <div class="container">
-    @include('flash::message') 
+    
     @yield('content_with_no_sidebar')
   </div>
   @endif  

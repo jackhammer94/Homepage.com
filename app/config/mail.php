@@ -94,7 +94,7 @@ return array(
 	|
 	*/
 
-	'password' => 'godisgreatallthetime',
+	'password' => 'godisgreatallthetime123',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -27,7 +27,27 @@ class PagesController extends \BaseController {
 	    	{
 	    		if($user_application->id === $application->id)
 	    			{
-	    				$found=1;break;
+	    				$found=1;
+	    				switch($application->application_name)
+	    				{
+	    					case "Movies":
+		    					$request = Request::create('/show_movies', 'GET');
+								$movies = Route::dispatch($request)->getContent(); //var_dump($movies);
+								$application->html = $movies;
+								$application->js = null;
+								break;
+							case "TV_Schedule":
+								$request = Request::create('/show_channels', 'GET');
+								$channels = Route::dispatch($request)->getContent(); //var_dump($channels);
+								$application->html = $channels;
+								break;
+							case "feeds":
+								$request = Request::create('/show_feeds', 'GET');
+								$feeds = Route::dispatch($request)->getContent(); //var_dump($feeds);
+								$application->html = $feeds;
+								break;
+						}
+	    				break;
 	    			}
 	    	}
 	    	if($found!==1)
@@ -98,13 +118,5 @@ class PagesController extends \BaseController {
 		return Redirect::to('/settings');
 	}
 
-	public function get_movies(){
-		$movies = DB::select('select * from movies where type=? ', ["nowplaying"]);
-		echo json_encode($movies);
-	}
-
-	public function get_upcoming_movies(){
-		$movies = DB::select('select * from movies where type=? ', ["upcoming"]);
-		echo json_encode($movies);
-	}
+	
 }

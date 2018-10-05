@@ -1,8 +1,8 @@
  $(document).ready(function() {
-
+   if(document.getElementsByClassName("channel_outer").length===0){ //execute if user is newly addin widget, don't if page is loading since its already done on serverside
    $.ajax({
      type: "GET",
-     url: base_url + '/show_channels',
+     url: base_url + '/get_channels',
      success: function(channels) {
        console.log("retrieved channels Successfully", channels);
        if (!isEmpty(channels)) {
@@ -19,6 +19,12 @@
      }
 
    });
+}
+   $('.channel_outer').each(function(index, elt){
+    var name = $(this).find('.channels').attr('id');
+    $("[title='" + name.replace(/_/g, " ") + "']").prop("disabled", true);
+    $("[title='" + name.replace(/_/g, " ") + "']").css("opacity", 0.4);
+  });
 
    $('#tv_schedule_modal').on("shown.bs.modal", function() {
      $("#tv_schedule_modal img.lazy").lazyload({

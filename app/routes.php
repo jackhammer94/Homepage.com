@@ -45,8 +45,9 @@ Route::put('/update_email/{id}', 'PagesController@update_email');
 Route::put('/update_password/{id}', 'PagesController@update_password');
 
 #movies
-Route::get('/get_movies', 'PagesController@get_movies');
-Route::get('/get_upcoming_movies', 'PagesController@get_upcoming_movies');
+Route::get('/get_movies', 'MoviesController@get_movies');
+Route::get('/get_upcoming_movies', 'MoviesController@get_upcoming_movies');
+Route::get('/show_movies', 'MoviesController@show_movies');
 
 #games
 Route::get('/games', 'PagesController@games');
@@ -140,6 +141,7 @@ Route::get('/get_feed_url', 'FeedsController@get_feed_url');
 #add channels
 Route::post('/add_channel', 'ChannelsController@add_channel');
 Route::get('/show_channels', 'ChannelsController@show_channels');
+Route::get('/get_channels', 'ChannelsController@get_channels');
 Route::get('/get_channel_id', 'ChannelsController@get_channel_id');
 Route::post('/remove_channel', 'ChannelsController@remove_channel');
 

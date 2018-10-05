@@ -511,7 +511,7 @@
 	}
 }).call(this, window, document);
 
-$(document).ready(function(){
+$(window).load(function(){
 	var controller = new YTV('Youtube', {
 
 			//channelId:'UCAh9DbAZny_eoGFsYlH2JZw',

@@ -3,26 +3,11 @@
 
 $(document).ready(function() {
 
-  $.ajax({
-    type: "GET",
-    url: base_url + '/show_feeds',
-    success: function(feeds) {
-      console.log("retrieved feeds Successfully", feeds);
-      if (!isEmpty(feeds)) {
-
-        feeds.forEach(function(feed, index) {
-          if (feed.feed_name !== "void_feed")
-            addFeed(feed, "load");
-        });
-
-      }
-    },
-    error: function() {
-      console.log('error fetching feeds!');
-    }
-
+  $('.news_feed_outer').each(function(index, elt){
+    var name = $(this).find('.news_feed').attr('id');
+    $("#"+name + "_button").prop("disabled", true);
+    $("#" + name + "_button").html("added");
   });
-
 
   $("#add_feeds").on("click", function() { //when + button is clicked open dialog
 
@@ -272,7 +257,7 @@ function displayFeed(data, name) {
         image_html = (image !== '') ? ("<img class='lazy' width='100' height='80'  align='left' data-original='" + image + "'></img>") : '';
 
         pub_date = items[i].pubDate ? items[i].pubDate : "";
-        ago = convert_time(pub_date);
+        ago = moment(pub_date).fromNow();
         if (name.substr(0, 11) == "Google_News") { //google news
           collapsible = (i > 2) ? "collapsible" : "";
           output = "<div class='entry  entry-" + i + " " + collapsible + "'>" + desc + "<hr/></div>";
@@ -285,10 +270,6 @@ function displayFeed(data, name) {
 
         $("#" + name + " .feed_loader").remove();
         $("#" + name).append(output);
-        if (name.substr(0, 11) == "Google_News") { //fixing css
-          $("#" + name + " .entry-" + i + " div.lh font:first-child").append("<span class='time'>" + ago + "</span>");
-          $('#' + name + ' a').attr('target', 'blank'); //make it open in new tab
-        }
       }
       else{
         entries_threshold  = entries_threshold+1; //1 entry was left out due to null title, so increase threshold which depends on forloop index by 1
@@ -297,7 +278,7 @@ function displayFeed(data, name) {
 
     add_view_more_button(name);
     if (name.substr(0, 11) == "Google_News") { //fixing css
-
+      $('#' + name + ' a').attr('target', 'blank');
       $("div.lh ").siblings().remove();
       $("div.lh .p").remove();
       $("#" + name + " .entry table tr td:first-child font a font").remove(); //remove pic caption?
@@ -331,7 +312,7 @@ function add_view_more_button(name) {
 
 function displayScrapedFeed(data, name) {
   console.log('scraped feed: ', data);
-  if (data) {
+  if (data.query.results.result) {
 
 
     if (name == "wikiquote_-_quote_of_the_day") {
@@ -341,7 +322,7 @@ function displayScrapedFeed(data, name) {
       var quote_author_link = "https://en.wikipedia.org/wiki/" + quote[1].trim();
 
       $("#" + name + " .feed_loader").remove();
-      $("#" + name).append("<div class='entry container-fluid'><p><i class='fa fa-quote-left'></i> <i>" + quote[0] + "<i> <i class='fa fa-quote-right'></i></p>" +
+      $("#" + name).append("<div class='entry container-fluid'><p><i class='fa fa-quote-left'></i> <i>" + quote[0] + "</i> <i class='fa fa-quote-right'></i></p>" +
         "<span>~<a href='" + quote_author_link + "' target='blank'>" + quote[1] + "</a></span></div>");
 
     } else {
@@ -408,44 +389,3 @@ function remove_feed(name) {
     save_feed("void_feed");
 }
 
-var time;
-
-function convert_time(time) {
-  var given_time = new Date(time); //time is in ISO format 
-  var current_time = new Date(); // current_time is of the form : "Sat Mar 21 2015 00:49:36 GMT+0530 (India Standard Time)"
-  var date = given_time.toDateString();
-  var local_time = given_time.toLocaleTimeString();
-  time = date + " at " + local_time; //eg: Sat Mar 21 2015 at 12:49:36 AM
-
-  var current_time_in_ms = current_time.getTime(); //current time in ms, eg: 1233333333333333534534
-  var given_time_in_ms = given_time.getTime();
-  var diff = current_time_in_ms - given_time_in_ms;
-  var mins_ago = diff / (1000 * 60);
-  var hrs_ago = diff / (1000 * 3600);
-  var days_ago = diff / (1000 * 3600 * 24);
-  var weeks_ago = diff / (1000 * 3600 * 24 * 7);
-
-  var ago;
-  var detailed_time;
-
-  if (days_ago > 7) //if post is weeks old
-  {
-    weeks_ago = parseInt(weeks_ago);
-    ago = (weeks_ago == 1) ? (weeks_ago + " week ago ") : (weeks_ago + " weeks ago "); //toFixed is used to round off values 
-  } else if (hrs_ago > 24) //if post is days old
-  {
-    days_ago = parseInt(days_ago);
-    ago = (days_ago == 1) ? (days_ago + " day ago ") : (days_ago + " days ago ");
-  } else if (mins_ago > 60) //if post is hrs old
-  {
-    hrs_ago = parseInt(hrs_ago);
-    ago = (hrs_ago == 1) ? (hrs_ago + " hr ago ") : (hrs_ago + " hrs ago ");
-  } else //if post is mins old
-  {
-    mins_ago = parseInt(mins_ago);
-    ago = (mins_ago == 1) ? (mins_ago + " min ago ") : (mins_ago + " mins ago ");
-  }
-
-  detailed_time = ago; //+" "+ time;
-  return detailed_time;
-}

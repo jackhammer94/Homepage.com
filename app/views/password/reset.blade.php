@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('content_with_no_sidebar')
+ <div class='col-xs-12 col-lg-4 col-lg-offset-4'>
+ 	@include('flash::message') 
+ 	<div  class="col-xs-12" style="background:white; border-top: 2px solid #422150;">
 	<h3><b>Set Your New Password</b></h3>
 
 	{{Form::open()}}
@@ -27,4 +30,5 @@
 	@if(Session::has('error'))
 		<p style="color:red;">{{Session::get('error')}}</p>
 	@endif
+</div>
 @stop
